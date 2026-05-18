@@ -48,7 +48,7 @@ def a_cos(n):
     return (2 / L_trig) * np.trapezoid(integrand, x_int_trig)
 
 
-def cosine_sum(x, N):
+def cos_sum(x, N):
     s = np.full_like(x, a_cos(0) / 2, dtype=float)
     for n in range(1, N + 1):
         s += a_cos(n) * np.cos(np.pi * n * x / L_trig)
@@ -60,7 +60,7 @@ def b_sin(n):
     return (2 / L_trig) * np.trapezoid(integrand, x_int_trig)
 
 
-def sine_sum(x, N):
+def sin_sum(x, N):
     s = np.zeros_like(x)
     for n in range(1, N + 1):
         s += b_sin(n) * np.sin(np.pi * n * x / L_trig)
@@ -145,10 +145,10 @@ x_zoom = np.linspace(0, 2, 1000)
 make_plot(x_global, general_sum, "Общий ряд Фурье (общий вид)", "general_global.png", mode="general")
 make_plot(x_zoom, general_sum, "Общий ряд Фурье (увеличенный вид)", "general_zoom.png", mode="general")
 
-make_plot(x_global, cosine_sum, "Косинусный ряд (общий вид)", "cosine_global.png", mode="even")
-make_plot(x_zoom, cosine_sum, "Косинусный ряд (увеличенный вид)", "cosine_zoom.png", mode="even")
+make_plot(x_global, cos_sum, "Косинусный ряд (общий вид)", "cos_global.png", mode="even")
+make_plot(x_zoom, cos_sum, "Косинусный ряд (увеличенный вид)", "cos_zoom.png", mode="even")
 
-make_plot(x_global, sine_sum, "Синусный ряд (общий вид)", "sine_global.png", mode="odd")
-make_plot(x_zoom, sine_sum, "Синусный ряд (увеличенный вид)", "sine_zoom.png", mode="odd")
+make_plot(x_global, sin_sum, "Синусный ряд (общий вид)", "sin_global.png", mode="odd")
+make_plot(x_zoom, sin_sum, "Синусный ряд (увеличенный вид)", "sin_zoom.png", mode="odd")
 
 print("Все графики успешно обновлены и сохранены.")
