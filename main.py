@@ -47,7 +47,6 @@ def a_cos(n):
     integrand = f_vals_trig * np.cos(np.pi * n * x_int_trig / L_trig)
     return (2 / L_trig) * np.trapezoid(integrand, x_int_trig)
 
-
 def cos_sum(x, N):
     s = np.full_like(x, a_cos(0) / 2, dtype=float)
     for n in range(1, N + 1):
@@ -55,15 +54,14 @@ def cos_sum(x, N):
     return s
 
 
-def b_sin(n):
+def a_sin(n):
     integrand = f_vals_trig * np.sin(np.pi * n * x_int_trig / L_trig)
     return (2 / L_trig) * np.trapezoid(integrand, x_int_trig)
-
 
 def sin_sum(x, N):
     s = np.zeros_like(x)
     for n in range(1, N + 1):
-        s += b_sin(n) * np.sin(np.pi * n * x / L_trig)
+        s += a_sin(n) * np.sin(np.pi * n * x / L_trig)
     return s
 
 
@@ -118,7 +116,6 @@ def plot_odd_extension():
 
 def make_plot(x, y_func, title, filename, mode="original"):
     plt.figure(figsize=(10, 6))
-
     if mode == "general":
         plot_periodic_piecewise()
     elif mode == "even":
@@ -130,7 +127,6 @@ def make_plot(x, y_func, title, filename, mode="original"):
 
     for N in [4, 10, 40, 100]:
         plt.plot(x, y_func(x, N), label=f'N={N}')
-
     plt.grid()
     plt.xlim(x[0], x[-1])
     plt.legend()
