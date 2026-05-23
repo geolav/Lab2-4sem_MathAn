@@ -54,26 +54,25 @@ def cos_sum(x, N):
     return s
 
 
-def a_sin(n):
+def b_sin(n):
     integrand = f_vals_trig * np.sin(np.pi * n * x_int_trig / L_trig)
     return (2 / L_trig) * np.trapezoid(integrand, x_int_trig)
 
 def sin_sum(x, N):
     s = np.zeros_like(x)
     for n in range(1, N + 1):
-        s += a_sin(n) * np.sin(np.pi * n * x / L_trig)
+        s += b_sin(n) * np.sin(np.pi * n * x / L_trig)
     return s
 
 
-def plot_original_piecewise():
+def plot_original():
     x1 = np.linspace(0, 1, 500, endpoint=False)
     x2 = np.linspace(1, 2, 500, endpoint=False)
     plt.plot(x1, 2 * x1, linewidth=3, color='blue', label='Исходная функция')
     plt.plot(x2, np.ones_like(x2), linewidth=3, color='blue')
 
 
-def plot_periodic_piecewise():
-    # Повторение каждые 2 единицы (Период = 2)
+def plot_periodic():
     for k in range(-2, 3):
         shift = 2 * k
         x1 = np.linspace(0 + shift, 1 + shift, 300, endpoint=False)
@@ -117,13 +116,13 @@ def plot_odd_extension():
 def make_plot(x, y_func, title, filename, mode="original"):
     plt.figure(figsize=(10, 6))
     if mode == "general":
-        plot_periodic_piecewise()
+        plot_periodic()
     elif mode == "even":
         plot_even_extension()
     elif mode == "odd":
         plot_odd_extension()
     else:
-        plot_original_piecewise()
+        plot_original()
 
     for N in [4, 10, 40, 100]:
         plt.plot(x, y_func(x, N), label=f'N={N}')
