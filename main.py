@@ -2,14 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def f_original(x):
-    if 0 <= x < 1:
-        return 2 * x
-    elif 1 <= x <= 2:
-        return 1
-    return 0
-
-
 # 1. Общий ряд Фурье (Период T = 2, l = 1)
 l_gen = 1
 x_int_gen = np.linspace(0, 2, 5000)
