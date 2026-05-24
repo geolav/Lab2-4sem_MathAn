@@ -20,13 +20,13 @@ a0_gen = np.trapezoid(f_vals_gen, x_int_gen) / l_gen
 
 
 def a_general(n):
-    integrand = f_vals_gen * np.cos(np.pi * n * x_int_gen / l_gen)
-    return np.trapezoid(integrand, x_int_gen) / l_gen
+    integral = f_vals_gen * np.cos(np.pi * n * x_int_gen / l_gen)
+    return np.trapezoid(integral, x_int_gen) / l_gen
 
 
 def b_general(n):
-    integrand = f_vals_gen * np.sin(np.pi * n * x_int_gen / l_gen)
-    return np.trapezoid(integrand, x_int_gen) / l_gen
+    integral = f_vals_gen * np.sin(np.pi * n * x_int_gen / l_gen)
+    return np.trapezoid(integral, x_int_gen) / l_gen
 
 
 def general_sum(x, N):
@@ -44,8 +44,8 @@ f_vals_trig = np.where(x_int_trig < 1, 2 * x_int_trig, 1)
 
 
 def a_cos(n):
-    integrand = f_vals_trig * np.cos(np.pi * n * x_int_trig / L_trig)
-    return (2 / L_trig) * np.trapezoid(integrand, x_int_trig)
+    integral = f_vals_trig * np.cos(np.pi * n * x_int_trig / L_trig)
+    return (2 / L_trig) * np.trapezoid(integral, x_int_trig)
 
 def cos_sum(x, N):
     s = np.full_like(x, a_cos(0) / 2, dtype=float)
@@ -55,8 +55,8 @@ def cos_sum(x, N):
 
 
 def b_sin(n):
-    integrand = f_vals_trig * np.sin(np.pi * n * x_int_trig / L_trig)
-    return (2 / L_trig) * np.trapezoid(integrand, x_int_trig)
+    integral = f_vals_trig * np.sin(np.pi * n * x_int_trig / L_trig)
+    return (2 / L_trig) * np.trapezoid(integral, x_int_trig)
 
 def sin_sum(x, N):
     s = np.zeros_like(x)
